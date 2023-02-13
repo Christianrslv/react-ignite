@@ -6,7 +6,7 @@ import styles from './Post.module.css';
 
 import { Avatar } from './Avatar';
 
-export function Post({ author, publishedAt, content }) {
+export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState([]);
 
   const [newCommentText, setNewCommentText] = useState('');
@@ -20,6 +20,8 @@ export function Post({ author, publishedAt, content }) {
     addSuffix: true
   });
 
+  const isNewCommentEmpty = newCommentText.length === 0;
+
   function handleCreateNewComment() {
     event.preventDefault();
 
@@ -30,6 +32,13 @@ export function Post({ author, publishedAt, content }) {
 
   function handleCreateNewCommentChange() {
     setNewCommentText(event.target.value);
+  }
+
+  function deleteComment(commentToDelete) {
+   const commentsWithoutDeletedOne = comments.filter(comment => {
+     return comment !== commentToDelete;
+   });
+   setComments(commentsWithoutDeletedOne);
   }
 
   return (
@@ -70,13 +79,23 @@ export function Post({ author, publishedAt, content }) {
           />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button 
+            type="submit"
+            disabled={isNewCommentEmpty}
+          >
+            Publicar
+          </button>
         </footer>
         </form>
 
         <div className={styles.commentList}>
           {comments.map(comment => {
-            return <Comment content={comment} />;
+            return (
+            <Comment 
+              key={comment}
+              content={comment} 
+              onDeleteComment={deleteComment}
+            />);
           })}
         </div>
       </article>

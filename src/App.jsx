@@ -31,24 +31,24 @@ const posts = [
     publishedAt: new Date('2023-02-08 13:48:00')
   },
   {
-    id: 1,
+    id: 2,
     author: {
       avatarUrl: 'https://github.com/Christianrslv.png',
-      name: 'Christian Rodrigues',
+      name: 'Fulano',
       role: 'Dev Frontend'
     },
     content: [
       {
         type: 'paragraph',
-        content: 'Fala galeraa 👋'
+        content: 'Eai pessoal'
       },
       {
         type: 'paragraph',
-        content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
+        content: 'Acabei de subir mais um projeto no meu portifa.'
       },
       {
         type: 'link',
-        content: '👉 jane.design/doctorcare'
+        content: '👉 poise.com'
       },
     ],
     publishedAt: new Date('2023-02-10 13:48:00')
